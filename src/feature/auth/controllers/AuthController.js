@@ -3,8 +3,7 @@ import { AUTH_START } from '../../../constants/ActionTypes';
 import AuthService from '../services/AuthService';
 
 function* auth() {
-  console.log('authcontroller');
-  yield call(AuthService.run);
+  yield call(AuthService);
 }
 
 const AuthController = [takeEvery(AUTH_START, auth)];

@@ -1,23 +1,20 @@
 import { put } from 'redux-saga/effects';
 import { AUTH_SUCCESS, AUTH_FAIL } from '../../../constants/ActionTypes';
 
-function* run() {
-  console.log('test');
+export default function* run() {
   try {
-    yield put({
-      type: AUTH_SUCCESS,
-      payload: {
-        auth: true,
-      },
-    });
+    // call RestAPI
+    const result = yield new Promise((resolve) =>
+      setTimeout(
+        () => resolve({ name: 'testUser', email: 'test@test.com' }),
+        1000
+      )
+    );
+    yield put({ type: AUTH_SUCCESS, payload: result });
   } catch (e) {
     yield put({
       type: AUTH_FAIL,
-      payload: {
-        auth: true,
-      },
+      payload: 'error occurred',
     });
   }
 }
-
-export default { run };
