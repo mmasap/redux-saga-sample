@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    authStart: () => dispatch(Action.authStart),
+    authStart: () => dispatch(Action.authStart()),
   };
 }
 
